@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Inmobiliaria Sagi: encuentra tu próximo hogar o inversión.">
+  <title>Inmobiliaria Sagi | Propiedades exclusivas</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <!-- ENCABEZADO Y MENÚ DE NAVEGACIÓN -->
+  <header class="topbar">
+    <a class="brand" href="#inicio">Inmobiliaria <span>Sagi</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú"> ☰ </button>
+    <nav id="mainNav">
+      <a class="active" href="#propiedades">Propiedades</a>
+      <a href="#preventas">Preventas</a>
+      <a href="#simulador">Simulador</a>
+      <a href="#valuar">Valuar propiedad</a>
+      <a href="#asesores">Asesores</a>
+      <a href="#panel">Panel</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="favoritesShortcut" title="Ver favoritos">
+        ♡ <span id="favoriteCount">0</span>
+      </button>
+      <button class="btn btn-gold" data-open="appointmentModal">▣ Agendar cita</button>
+    </div>
+  </header>
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <!-- PORTADA PRINCIPAL -->
+    <section class="portada" id="inicio">
+      <div class="portada-contenido">
+        <div class="portada-texto">
+          <p class="portada-etiqueta">INMOBILIARIA SAGI · PROPIEDADES EXCLUSIVAS </p>
+          <h1 class="portada-titulo">
+            Encuentra el lugar
+            <span>que siempre soñaste</span>
+          </h1>
+          <p class="portada-descripcion">
+            Descubre propiedades exclusivas, encuentra tu próximo hogar
+            o invierte en espacios con gran potencial de crecimiento.
+          </p>
+          <div class="portada-acciones">
+            <a href="#propiedades" class="btn btn-gold">Explorar propiedades</a>
+            <a href="#asesores" class="btn btn-outline">Conoce a nuestros asesores</a>
+          </div>
+          <div class="portada-datos">
+            <div>
+              <strong>Exclusividad</strong>
+              <span>Propiedades seleccionadas</span>
+            </div>
+            <div>
+              <strong>Confianza</strong>
+              <span>Atención personalizada</span>
+            </div>
+            <div>
+              <strong>Inversión</strong>
+              <span>Oportunidades inmobiliarias</span>
+            </div>
+          </div>
+        </div>
+        <div class="portada-decoracion">
+          <div class="portada-imagen">
+            <div class="imagen-etiqueta">Propiedades exclusivas</div>
+            <div class="portada-mensaje">
+              <span class="mensaje-icono">⌂</span>
+
+              <div>
+                <strong>Tu próximo hogar comienza aquí</strong>
+                <span>Inmobiliaria Sagi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- BUSCADOR DE PROPIEDADES -->
+      <div class="search-panel" aria-label="Buscador de propiedades">
+
+        <div class="search-toolbar">
+
+          <div class="tabs" id="operationTabs">
+            <button class="tab active" data-operation="Todos">Todos los inmuebles</button>
+            <button class="tab" data-operation="Venta">Comprar</button>
+            <button class="tab" data-operation="Renta">Rentar</button>
+            <button class="tab" data-operation="Preventa">Preventas e inversión</button>
+          </div>
+          <div class="currency-switch">
+            <span>Moneda:</span>
+            <button class="currency active" data-currency="MXN">MXN ($)</button>
+            <button class="currency" data-currency="USD">USD ($)</button>
+          </div>
+        </div>
+        <div class="filters">
+          <label>
+              Ciudad o zona
+            <select id="cityFilter">
+              <option value="">Todas las ciudades</option>
+              <option>Mazatlán</option>
+              <option>Ciudad de México</option>
+              <option>Guadalajara</option>
+              <option>Monterrey</option>
+              <option>San Pedro Garza García</option>
+            </select>
+          </label>
+          <label>
+            ▣ Tipo de inmueble
+            <select id="typeFilter">
+              <option value="">Cualquier tipo</option>
+              <option>Casa</option>
+              <option>Departamento</option>
+              <option>Penthouse</option>
+              <option>Local comercial</option>
+              <option>Oficina</option>
+            </select>
+          </label>
+          <label>
+            Recámaras mínimas
+            <select id="bedFilter">
+              <option value="0">Indiferente</option>
+              <option value="1">1 o más</option>
+              <option value="2">2 o más</option>
+              <option value="3">3 o más</option>
+              <option value="4">4 o más</option>
+            </select>
+          </label>
+          <label>
+            🔎 Palabra clave
+            <input id="keywordFilter" type="search" placeholder="Alberca, Polanco, terraza...">
+          </label>
+        </div>
+        <div class="filter-footer">
+          <span id="resultsCount">Mostrando propiedades disponibles</span>
+          <button class="text-btn" id="clearFilters">↻ Limpiar filtros</button>
+        </div>
+      </div>
+    </section>
+    <!-- CATÁLOGO DE PROPIEDADES -->
+    <section class="catalog-section" id="propiedades">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PORTAFOLIO SAGI</p>
+          <h2>Catálogo de propiedades</h2>
+        </div>
+        <div class="view-actions">
+          <button class="view-btn" id="showFavorites"> ♡ Favoritos (<span id="favoriteCount2">0</span>)</button>
+          <button class="view-btn selected">▦ Cuadrícula</button>
+          <button class="view-btn" id="mapNotice">♧ Mapa</button>
+        </div>
+      </div>
+      <div class="property-grid" id="propertyGrid"></div>
+      <p class="empty-state hidden" id="emptyState">
+        No encontramos propiedades con esos filtros.
+        Prueba modificando tu búsqueda.
+      </p>
+    </section>
+    <!-- SECCIÓN DE PREVENTAS -->
+    <section class="info-section" id="preventas">
+      <div>
+        <p class="eyebrow">OPORTUNIDADES SAGI</p>
+        <h2>Preventas e inversión</h2>
+        <p>
+          Explora nuevos desarrollos inmobiliarios con potencial de
+          crecimiento y excelentes oportunidades para invertir.
+        </p>
+      </div>
+      <a class="btn btn-outline" href="#propiedades">Explorar propiedades</a>
+    </section>
+    <!-- HERRAMIENTAS Y SERVICIOS -->
+    <section class="tools-grid">
+      <!-- SIMULADOR HIPOTECARIO -->
+      <article class="tool-card" id="simulador">
+        <p class="eyebrow">PLANEACIÓN FINANCIERA</p>
+        <h2>Simulador hipotecario</h2>
+        <p>
+          Calcula una mensualidad estimada con base en el precio
+          de la propiedad, enganche, tasa de interés y plazo.
+        </p>
+        <div class="form-grid">
+          <label>
+            Precio de la propiedad (MXN)
+            <input id="loanPrice" type="number" value="2500000" min="1">
+          </label>
+          <label>
+            Enganche (%)
+            <input id="downPayment" type="number" value="20" min="0" max="99">
+          </label>
+          <label>
+            Tasa anual (%)
+            <input id="interestRate" type="number" value="10.5" min="0" step="0.1">
+          </label>
+          <label>
+            Plazo (años)
+            <select id="loanYears">
+              <option>10</option>
+              <option selected>15</option>
+              <option>20</option>
+              <option>25</option>
+            </select>
+          </label>
+        </div>
+        <button class="btn btn-gold" id="calculateLoan">Calcular mensualidad</button>
+        <p class="calculation-result" id="loanResult">Ingresa los datos para calcular.</p>
+        <small>
+          Estimación ilustrativa; no representa una oferta ni
+          autorización de crédito.
+        </small>
+      </article>
+      <!-- SOLICITUD DE VALUACIÓN -->
+      <article class="tool-card" id="valuar">
+        <p class="eyebrow">SERVICIO PARA PROPIETARIOS</p>
+        <h2>¿Quieres vender tu propiedad?</h2>
+        <p>
+          Comparte los datos de tu inmueble y nuestro equipo
+          podrá ponerse en contacto contigo.
+        </p>
+        <form id="valuationForm" class="stack-form">
+          <input name="owner" placeholder="Nombre completo" required>
+          <input name="phone" placeholder="Teléfono" required>
+          <input name="email" type="email" placeholder="Correo electrónico">
+          <input name="address" placeholder="Dirección de la propiedad" required>
+          <select name="propertyType" required>
+            <option value="">Tipo de inmueble</option>
+            <option>Casa</option>
+            <option>Departamento</option>
+            <option>Terreno</option>
+            <option>Local comercial</option>
+          </select>
+          <button class="btn btn-gold" type="submit">Solicitar contacto</button>
+        </form>
+      </article>
+    </section>
+    <!-- SECCIÓN DE ASESORES -->
+    <section class="info-section agent-section" id="asesores">
+      <div>
+        <p class="eyebrow">ATENCIÓN PERSONALIZADA</p>
+        <h2>Asesores inmobiliarios</h2>
+        <p>Te acompañamos durante la búsqueda, visita y proceso
+          de compra, renta o venta de tu propiedad.</p>
+      </div>
+      <div class="agent-chip">
+        <span class="avatar">MS</span>
+        <span> <b>Mariana Salgado</b> <small>Asesora inmobiliaria</small> </span>
+      </div>
+    </section>
+    <!-- PANEL DE ADMINISTRACIÓN -->
+    <section class="admin-section" id="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">GESTIÓN DE SOLICITUDES</p>
+          <h2>Panel de administración</h2>
+        </div>
+        <span class="demo-label">Datos guardados en este navegador </span>
+      </div>
+      <div class="admin-stats">
+        <div> <strong id="appointmentTotal">0</strong> <span>Citas</span> </div>
+        <div><strong id="valuationTotal">0</strong> <span>Solicitudes de valuación</span> </div>
+        <div> <strong id="favoriteTotal">0</strong> <span>Favoritos</span> </div> </div>
+      <div class="request-list" id="requestList">Aún no hay solicitudes registradas. </div>
+    </section>
+  </main>
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <a class="brand" href="#inicio">Inmobiliaria <span>Sagi</span></a>
+    <p>© 2026 Inmobiliaria Sagi. Proyecto académico.</p>
+    <p class="footer-note">
+      Prototipo de interfaz: los datos de demostración se guardan
+      localmente en este navegador.
+    </p>
+  </footer>
+  <!-- VENTANA DE DETALLES DE PROPIEDAD -->
+  <dialog id="propertyModal" class="modal">
+    <button class="modal-close" data-close>x</button>
+    <div id="propertyDetail"></div>
+  </dialog>
+  <!-- VENTANA PARA AGENDAR UNA CITA -->
+  <dialog id="appointmentModal" class="modal">
+    <button class="modal-close" data-close>x</button>
+    <p class="eyebrow">AGENDA SAGI</p>
+    <h2>Agendar una cita</h2>
+    <form id="appointmentForm" class="stack-form">
+      <input name="name" placeholder="Nombre completo" required>
+      <input name="phone" placeholder="Teléfono" required>
+      <input name="email" type="email" placeholder="Correo electrónico">
+      <select name="property" id="appointmentProperty">
+        <option value=""> Selecciona una propiedad (opcional) </option>
+      </select>
+      <label> Fecha y hora <input name="date" type="datetime-local" required > </label>
+      <button class="btn btn-gold" type="submit">Enviar solicitud </button>
+    </form>
+  </dialog>
+  <!-- NOTIFICACIONES -->
+  <div class="toast" id="toast" role="status"></div>
+  <!-- ARCHIVOS JAVASCRIPT -->
+  <script src="js/propiedades.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/filtros.js"></script>
+</body>
+</html>
